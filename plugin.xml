@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.thomasdalla.cordova.koc"
+        version="0.1.0">
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <name>KoC</name>
+    <description>Native actions for Kings Of Chaos mobile game</description>
+    <author>Thomas Dalla</author>
+    <keywords>koc,kings,chaos</keywords>
+    <license>MIT</license>
+
+    <js-module src="www/koc-cordova.js" name="KoC">
+        <clobbers target="cordova.plugins.koc" />
+    </js-module>
+
+    <!-- iOS
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="KoC">
+                <param name="ios-package" value="CDVKoC" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/CDVKoC.h" />
+        <source-file src="src/ios/CDVKoC.m" />
+    </platform>
+    -->
+
+    <!-- Android -->
+    <platform name="android">
+        <source-file src="src/android/KoC.java" target-dir="src/com/thomasdalla/cordova/koc" />
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="KoC">
+                <param name="android-package" value="com.thomasdalla.cordova.koc.KoC" />
+            </feature>
+        </config-file>
+    </platform>
+
+</plugin>
