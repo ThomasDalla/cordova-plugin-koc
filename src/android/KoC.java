@@ -34,6 +34,21 @@ public class KoC extends CordovaPlugin {
         return false;
     }
 
+    public static void executeGet(String url, String cookie)
+    {
+        try {
+            URL obj = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Language", "en-US");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36");
+            connection.setRequestProperty("Cookie", cookie);
+            connection.setRequestProperty("Referer", url);
+            connection.connect();
+        }
+        catch(Exception ignored) {}
+    }
+
     public static Map<String, Object> executePost(String targetURL, String urlParameters, String cookie)
     {
         Map<String,Object> out = new HashMap<String, Object>();
@@ -134,6 +149,8 @@ public class KoC extends CordovaPlugin {
                                 koc_session = cookie.getValue();
                         }
                         message.put("session", koc_session );
+                        // Call setres.php otherwise recruit doesn't work
+                        executeGet("http://www.kingsofchaos.com/setres.php?width=1280&height=720", "country=XO; gsScrollPos=; koc_session="+koc_session+";");
                     }
                     else {
                         // Don't know what to do

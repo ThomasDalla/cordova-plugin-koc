@@ -90,6 +90,9 @@ static NSDictionary* _login(NSString* username, NSString* password) {
 			else if ([path rangeOfString:@"base.php"].location != NSNotFound) {
 				[dict setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
 				[dict removeObjectForKey:@"error"];
+				NSURL *setResUrl = [NSURL URLWithString:@"http://www.kingsofchaos.com/setres.php?width=1280&height=720"];
+				NSMutableURLRequest *setResRequest = [[NSMutableURLRequest alloc] initWithURL:setResUrl];
+				data = [NSURLConnection sendSynchronousRequest:setResRequest returningResponse:&response error:&error];
 			}
 			else {
 				[dict setObject:[NSNumber numberWithBool:NO]     forKey:@"success"];
