@@ -27,8 +27,8 @@ static NSDictionary* _login(NSString* username, NSString* password) {
     BOOL success = false;
     NSDictionary *jsonObj = [ [NSDictionary alloc]
                               initWithObjectsAndKeys:
-                                 "Error: TODO", @"error",
-                                 succes, @"success",
+                                 @"Error: TODO", @"error",
+                                 success, @"success",
                                  nil
                             ];
     return jsonObj;
